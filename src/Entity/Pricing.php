@@ -14,7 +14,7 @@ namespace UpCloud\Entity;
 /**
  * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
-final class Account extends AbstractEntity
+final class Pricing extends AbstractEntity
 {
     /**
      * @var string

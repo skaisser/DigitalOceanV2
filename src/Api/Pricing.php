@@ -11,22 +11,22 @@
 
 namespace UpCloud\Api;
 
-use UpCloud\Entity\Account as AccountEntity;
+use UpCloud\Entity\Pricing as PricingEntity;
 
 /**
  * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
-class Account extends AbstractApi
+class Pricing extends AbstractApi
 {
     /**
-     * @return AccountEntity
+     * @return PricingEntity
      */
-    public function getAccountInformation()
+    public function listPrices()
     {
-        $account = $this->adapter->get(sprintf('%s/account', $this->endpoint));
+        $pricing = $this->adapter->get(sprintf('%s/price', $this->endpoint));
 
-        $account = json_decode($account);
+        $pricing = json_decode($pricing);
 
-        return new AccountEntity($account->account);
+        return new PricingEntity($pricing->pricing);
     }
 }

@@ -1,25 +1,24 @@
 <?php
 
 /*
- * This file is part of the DigitalOceanV2 library.
+ * This file is part of the UpCloud library.
  *
- * (c) Antoine Corcy <contact@sbin.dk>
+ * (c) Shirleyson Kaisser <skaisser@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace DigitalOceanV2\Adapter;
+namespace UpCloud\Adapter;
 
-use DigitalOceanV2\Exception\HttpException;
+use UpCloud\Exception\HttpException;
 use Guzzle\Http\Client;
 use Guzzle\Http\ClientInterface;
 use Guzzle\Http\Exception\RequestException;
 use Guzzle\Http\Message\Response;
 
 /**
- * @author Liverbool <nukboon@gmail.com>
- * @author Graham Campbell <graham@alt-three.com>
+ * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
 class GuzzleAdapter implements AdapterInterface
 {

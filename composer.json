@@ -1,29 +1,23 @@
 {
-    "name"       : "toin0u/digitalocean-v2",
+    "name"       : "skaisser/upcloud",
     "type"       : "library",
-    "description": "DigitalOcean API v2 PHP 5.4+ library",
-    "keywords"   : ["DigitalOcean", "API", "Cloud Hosting", "SSD", "VPS"],
-    "homepage"   : "https://github.com/toin0u/DigitalOceanV2",
+    "description": "UpCloud API v1.2.2 PHP 5.4+ library",
+    "keywords"   : ["UpCloud", "API", "Cloud Hosting", "SSD", "VPS", "MaxIops"],
+    "homepage"   : "https://github.com/skaisser/UpCloud",
     "license"    : "MIT",
 
     "authors": [
         {
-            "name"    : "Antoine Corcy",
-            "email"   : "contact@sbin.dk",
-            "homepage": "http://sbin.dk",
-            "role"    : "Developer"
-        },
-        {
-            "name"    : "Yassir Hannnoun",
-            "email"   : "yassir.hannoun@gmail.com",
-            "homepage": "https://yassirh.com",
+            "name"    : "Shirleyson Kaisser",
+            "email"   : "skaisser@gmail.com",
+            "homepage": "http://skaisser.com",
             "role"    : "Developer"
         }
     ],
 
     "support": {
-        "issues": "https://github.com/toin0u/DigitalOceanV2/issues",
-        "source": "https://github.com/toin0u/DigitalOceanV2"
+        "issues": "https://github.com/skaisser/UpCloud/issues",
+        "source": "https://github.com/skaisser/UpCloud"
     },
 
     "require": {
@@ -46,17 +40,11 @@
 
     "autoload": {
         "psr-4": {
-            "DigitalOceanV2\\": "src/"
+            "UpCloud\\": "src/"
         }
     },
 
     "config": {
         "preferred-install": "dist"
-    },
-
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.1-dev"
-        }
     }
 }

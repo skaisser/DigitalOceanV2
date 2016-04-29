@@ -1,8 +1,8 @@
 <?php
 
-namespace DigitalOceanV2\Adapter;
+namespace UpCloud\Adapter;
 
-use DigitalOceanV2\Exception\HttpException;
+use UpCloud\Exception\HttpException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
@@ -10,9 +10,7 @@ use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Response;
 
 /**
- * @author Marcos Sigueros <alrik11es@gmail.com>
- * @author Chris Fidao <fideloper@gmail.com>
- * @author Graham Campbell <graham@alt-three.com>
+ * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
 class GuzzleHttpAdapter implements AdapterInterface
 {
@@ -33,11 +31,11 @@ class GuzzleHttpAdapter implements AdapterInterface
     public function __construct($token, ClientInterface $client = null)
     {
         if (version_compare(ClientInterface::VERSION, '6') === 1) {
-            $this->client = $client ?: new Client(['headers' => ['Authorization' => sprintf('Bearer %s', $token)]]);
+            $this->client = $client ?: new Client(['headers' => ['Authorization' => sprintf('Basic %s', $token)]]);
         } else {
-            $this->client = $client ?: new Client();
+            $this->client = $client ?: new Client();å
 
-            $this->client->setDefaultOption('headers/Authorization', sprintf('Bearer %s', $token));
+            $this->client->setDefaultOption('headers/Authorization', sprintf('Basic %s', $token));
         }
     }
 

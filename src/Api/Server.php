@@ -1,103 +1,54 @@
 <?php
 
 /*
- * This file is part of the DigitalOceanV2 library.
+ * This file is part of the UpCloud library.
  *
- * (c) Antoine Corcy <contact@sbin.dk>
+ * (c) Shirleyson Kaisser <skaisser@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace DigitalOceanV2\Api;
+namespace UpCloud\Api;
 
-use DigitalOceanV2\Entity\Action as ActionEntity;
-use DigitalOceanV2\Entity\Droplet as DropletEntity;
-use DigitalOceanV2\Entity\Image as ImageEntity;
-use DigitalOceanV2\Entity\Kernel as KernelEntity;
-use DigitalOceanV2\Entity\Upgrade as UpgradeEntity;
-use DigitalOceanV2\Exception\HttpException;
+use UpCloud\Entity\Server as ServerEntity;
+use UpCloud\Exception\HttpException;
 
 /**
- * @author Yassir Hannoun <yassir.hannoun@gmail.com>
- * @author Graham Campbell <graham@alt-three.com>
+ * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
-class Droplet extends AbstractApi
+class Server extends AbstractApi
 {
     /**
-     * @return DropletEntity[]
+     * @return ServerEntity[]
      */
-    public function getAll()
+    public function listServers()
     {
-        $droplets = $this->adapter->get(sprintf('%s/droplets?per_page=%d', $this->endpoint, 200));
+        $servers = $this->adapter->get(sprintf('%s/server', $this->endpoint));
 
-        $droplets = json_decode($droplets);
+        $servers = json_decode($servers);
 
-        $this->extractMeta($droplets);
-
-        return array_map(function ($droplet) {
-            return new DropletEntity($droplet);
-        }, $droplets->droplets);
+        return array_map(function ($server) {
+            return new ServerEntity($server);
+        }, $servers->server);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return DropletEntity[]
-     */
-    public function getNeighborsById($id)
-    {
-        $droplets = $this->adapter->get(sprintf('%s/droplets/%d/neighbors', $this->endpoint, $id));
-
-        $droplets = json_decode($droplets);
-
-        return array_map(function ($droplet) {
-            return new DropletEntity($droplet);
-        }, $droplets->droplets);
-    }
+   
 
     /**
-     * @return DropletEntity[]
-     */
-    public function getAllNeighbors()
-    {
-        $neighbors = $this->adapter->get(sprintf('%s/reports/droplet_neighbors', $this->endpoint));
-
-        $neighbors = json_decode($neighbors);
-
-        return array_map(function ($neighbor) {
-            return new DropletEntity($neighbor);
-        }, $neighbors->neighbors);
-    }
-
-    /**
-     * @return UpgradeEntity[]
-     */
-    public function getUpgrades()
-    {
-        $upgrades = $this->adapter->get(sprintf('%s/droplet_upgrades', $this->endpoint));
-
-        $upgrades = json_decode($upgrades);
-
-        return array_map(function ($upgrade) {
-            return new UpgradeEntity($upgrade);
-        }, $upgrades);
-    }
-
-    /**
-     * @param int $id
+     * @param string $uuid
      *
      * @throws HttpException
      *
-     * @return DropletEntity
+     * @return ServerEntity
      */
-    public function getById($id)
+    public function getByUniqueId($uuid)
     {
-        $droplet = $this->adapter->get(sprintf('%s/droplets/%d', $this->endpoint, $id));
+        $server = $this->adapter->get(sprintf('%s/server/%s', $this->endpoint, $uuid));
 
-        $droplet = json_decode($droplet);
+        $server = json_decode($server);
 
-        return new DropletEntity($droplet->droplet);
+        return new ServerEntity($server->server);
     }
 
     /**
@@ -150,13 +101,13 @@ class Droplet extends AbstractApi
     }
 
     /**
-     * @param int $id
+     * @param int $uuid
      *
      * @throws HttpException
      */
-    public function delete($id)
+    public function server($uuid)
     {
-        $this->adapter->delete(sprintf('%s/droplets/%d', $this->endpoint, $id));
+        $this->adapter->delete(sprintf('%s/server/%s', $this->endpoint, $uuid));
     }
 
     /**

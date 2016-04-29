@@ -14,16 +14,42 @@ namespace UpCloud\Entity;
 /**
  * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
-final class Account extends AbstractEntity
+final class Plan extends AbstractEntity
 {
-    /**
-     * @var string
+   /**
+     * @var int
      */
-    public $credits;
+    public $core_number;
+
+
+    /**
+     * @var int
+     */
+    public $memory_amount;
+
 
     /**
      * @var string
      */
-    public $username;
+    public $name;
 
+
+    /**
+     * @var int
+     */
+    public $public_traffic_out;
+
+
+    /**
+     * @var int
+     */
+    public $storage_size;
+
+
+    /**
+     * @var string
+     */
+    public $storage_tier;
+
+    
 }

@@ -14,16 +14,17 @@ namespace UpCloud\Entity;
 /**
  * @author Shirleyson Kaisser <skaisser@gmail.com>
  */
-final class Account extends AbstractEntity
+final class Zone extends AbstractEntity
 {
     /**
      * @var string
      */
-    public $credits;
+    public $id;
 
     /**
      * @var string
      */
-    public $username;
+    public $description;
 
+    
 }
